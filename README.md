@@ -31,12 +31,12 @@ osixia/openldap:latest
 ###### Environment:
 
 ```bash
-- LDAP_ORGANISATION=krishna
-- LDAP_DOMAIN=krishna.com
+- LDAP_ORGANISATION=cicd
+- LDAP_DOMAIN=cicd.com
 - LDAP_ADMIN_USERNAME=admin
 - LDAP_ADMIN_PASSWORD=test@123#
 - LDAP_CONFIG_PASSWORD=config_pass
-- "LDAP_BASE_DN=dc=krishna,dc=com"
+- "LDAP_BASE_DN=dc=cicd,dc=com"
 - LDAP_TLS_CRT_FILENAME=server.crt
 - LDAP_TLS_KEY_FILENAME=server.key
 - LDAP_TLS_CA_CRT_FILENAME=krishna.com.ca.crt
@@ -67,4 +67,12 @@ osixia/phpldapadmin:latest
 - PHPLDAPADMIN_LDAP_HOSTS=openldap
 - PHPLDAPADMIN_HTTPS=false
 ```
+ #### Now open the broswer with ip or domain and enter the user name and password
+ ```bash
+ http://localhost
+ login DN: cn=admin,dc=cicd,dc=com
+ passowrd= test@123#
+ ```
  
+ ![image](https://user-images.githubusercontent.com/60917359/109640258-5490cd80-7b78-11eb-985b-8c40459e417f.png)
+
