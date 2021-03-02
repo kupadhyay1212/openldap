@@ -67,7 +67,7 @@ osixia/phpldapadmin:latest
 - PHPLDAPADMIN_LDAP_HOSTS=openldap
 - PHPLDAPADMIN_HTTPS=false
 ```
- #### Now open the broswer with ip or domain and enter the user name and password
+ #### Now open the broswer with IP or domain and enter the Login DN and Password
  ```bash
  http://localhost
  login DN: cn=admin,dc=cicd,dc=com
