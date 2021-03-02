@@ -6,8 +6,7 @@
 
 # OpenLDAP
 # Base Image:
-# osixia/openldap:latest
+# " osixia/openldap:latest "
 # Port:
-# | - "389:389"|
-# | - "636:636"|
+#  - "389:389",  - "636:636"
  
