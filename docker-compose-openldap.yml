@@ -1,0 +1,43 @@
+version: '3.7'
+services:
+  openldap:
+    image : osixia/openldap:latest
+    hostname: openldap
+    ports:
+      - 389:389
+      - 636:636
+    environment:
+      - LDAP_ORGANISATION=cicd
+      - LDAP_DOMAIN=cicd.com
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=Nirvana@123#
+      - LDAP_CONFIG_PASSWORD=config_pass
+      - "LDAP_BASE_DN=dc=cicd,dc=com"
+      - LDAP_TLS_CRT_FILENAME=server.crt
+      - LDAP_TLS_KEY_FILENAME=server.key
+      - LDAP_TLS_CA_CRT_FILENAME=cicd.com.ca.crt
+      - LDAP_READONLY_USER=true
+      - LDAP_READONLY_USER_USERNAME=amnil
+      - LDAP_READONLY_USER_PASSWORD=test@123#
+    volumes:
+      - /dockervolume/openldap/ldap:/var/lib/ldap
+      - /dockervolume/openldap/slapd.d:/etc/ldap/slapd.d
+      - /dockervolume/openldap/certificates:/container/service/slapd/assets/certs
+    networks:
+      - openldap
+
+  phpldapadmin:
+    image: osixia/phpldapadmin:latest
+    hostname: phpldapadmin
+    ports:
+      - "8081:80"
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=openldap
+      - PHPLDAPADMIN_HTTPS=false
+    depends_on:
+     - openldap
+    networks:
+      - openldap
+
+networks:
+  openldap:
